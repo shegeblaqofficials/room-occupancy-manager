@@ -17,9 +17,6 @@ public class RoomOccupancyManagerServiceTest {
 	@Autowired
 	private RoomOccupancyManagerService roomOccupancyManagerService;
 
-	//test data
-	private double[] potentialGuests = {23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209};
-
 	@Test
 	@DisplayName("Test with available rooms - Premium 3 and Economy 3")
 	void test_premium_3_economy_3_shouldReturn_premium_3_economy_3() {
@@ -31,7 +28,7 @@ public class RoomOccupancyManagerServiceTest {
 				.build();
 		
 		/// when
-		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms, potentialGuests);
+		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms);
 
 		//then
 		then(usage.getTotalEconomyGuest()).isEqualTo(3);
@@ -51,7 +48,7 @@ public class RoomOccupancyManagerServiceTest {
 				.build();
 		
 		/// when
-		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms, potentialGuests);
+		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms);
 
 		//then
 		then(usage.getTotalEconomyGuest()).isEqualTo(4);
@@ -71,7 +68,7 @@ public class RoomOccupancyManagerServiceTest {
 				.build();
 		
 		/// when
-		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms, potentialGuests);
+		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms);
 
 		//then
 		then(usage.getTotalEconomyGuest()).isEqualTo(4);
@@ -92,7 +89,7 @@ public class RoomOccupancyManagerServiceTest {
 				.build();
 		
 		/// when
-		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms, potentialGuests);
+		RoomsUsage usage = roomOccupancyManagerService.calculateRoomUsage(availableRooms);
 
 		//then
 		then(usage.getTotalEconomyGuest()).isEqualTo(1);

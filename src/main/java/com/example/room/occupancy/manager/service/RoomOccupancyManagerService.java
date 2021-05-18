@@ -13,8 +13,11 @@ import com.example.room.occupancy.manager.util.Constant;
 public class RoomOccupancyManagerService {
 
 	Logger logger = LoggerFactory.getLogger(RoomOccupancyManagerService.class);
+	
+	//test data
+	private double[] potentialGuests = {23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209};
 
-	public RoomsUsage calculateRoomUsage(AvailableRooms availableRooms, double[] potentialGuests) {
+	public RoomsUsage calculateRoomUsage(AvailableRooms availableRooms) {
 
 		// sort the potentialGuests
 		Arrays.sort(potentialGuests);
@@ -34,6 +37,7 @@ public class RoomOccupancyManagerService {
 
 				totalUsedPremiumRooms++;
 				totalPremiumIncome += potentialGuests[i];
+				logger.info("count: "+bidPrice);
 			} else {
 
 				if (totalUsedPremiumRooms < availableRooms.getAvailablePremiumRoom()
@@ -42,6 +46,9 @@ public class RoomOccupancyManagerService {
 
 					totalUsedPremiumRooms++;
 					totalPremiumIncome += potentialGuests[i];
+					logger.info("counthere: "+bidPrice);
+					logger.info("counthere: "+(i+1));
+					
 				} else if (totalUsedEconomyRooms < availableRooms.getAvailableEconomyRoom()
 						&& bidPrice < Constant.PREMIUM_MINIMUM_AMOUNT) {
 
